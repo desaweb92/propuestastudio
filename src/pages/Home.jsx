@@ -21,12 +21,6 @@ const Home = () => {
 
   // Datos de la empresa
 
-    const projects = [
-    { id: 1, title: "Centro Comercial Galerías", location: "Bogotá, Colombia", image: "https://imgur.com/ltYKdjN.jpg" },
-    { id: 2, title: "Hotel Boutique Cartagena", location: "Cartagena, Colombia", image: "https://imgur.com/M0FkRgK.jpg" },
-    { id: 3, title: "Torres del Parque", location: "Miami, EE.UU.", image: "https://imgur.com/ESp0r14.jpg" },
-    { id: 4, title: "Paisajismo Urbano", location: "Nueva Jersey, EE.UU.", image: "https://imgur.com/dAPMn7j.jpg" }
-  ]
 
   const services = [
     { title: "Interiorismo Comercial", image: "https://imgur.com/8UzYJDT.jpg" },
@@ -35,12 +29,7 @@ const Home = () => {
     { title: "Diseño Urbano-Paisajístico", image: "https://imgur.com/jbbr9He.jpg" }
   ]
 
-  const offices = [
-    { city: "Miami", country: "EE.UU.", image: "https://imgur.com/p9YlwY6.jpg" },
-    { city: "Nueva Jersey", country: "EE.UU.", image: "https://imgur.com/aJfoeK1.jpg" },
-    { city: "Pensilvania", country: "EE.UU.", image: "https://imgur.com/BAfeZwm.jpg" },
-    { city: "Bogotá", country: "Colombia", image: "https://imgur.com/aRRsRTm.jpg" }
-  ]
+
 
 
 
@@ -168,43 +157,7 @@ const Home = () => {
   </div>
 </motion.section>
 
-         {/* Galería de proyectos */}
-      <section 
-        id="gallery-section"
-        ref={addToRefs}
-        className="gallery-section"
-      >
-        <div className="section-container">
-          <h2 className="section-title">Proyectos Destacados</h2>
-          <div className="gallery-grid">
-            {projects.map((project) => (
-              <motion.div 
-                key={project.id}
-                className="gallery-item"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <div className="gallery-media-container">
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline 
-                    className="gallery-video"
-                    poster={project.image}
-                  >
-                    <source src={project.video} type="video/mp4" />
-                  </video>
-                  <div className="gallery-overlay">
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-location">{project.location}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Servicios */}
       <section 
@@ -243,36 +196,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Oficinas */}
-      <section 
-        ref={addToRefs}
-        className="offices-section"
-      >
-        <div className="section-container">
-          <h2 className="section-title">Nuestras Oficinas</h2>
-          <div className="offices-grid">
-            {offices.map((office, index) => (
-              <motion.div 
-                key={index} 
-                className="office-item"
-                whileHover={{ scale: 1.03 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              >
-                <img 
-                  ref={addImageToRefs}
-                  src={office.image} 
-                  alt={`Oficina en ${office.city}`} 
-                  className="office-image"
-                />
-                <div className="office-info">
-                  <div className="office-city">{office.city}</div>
-                  <div className="office-country">{office.country}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
   <Footer/>
     </div>
