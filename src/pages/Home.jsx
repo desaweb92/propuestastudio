@@ -21,10 +21,10 @@ const Home = () => {
   // Datos de la empresa
 
     const projects = [
-    { id: 1, title: "Centro Comercial Galerías", location: "Bogotá, Colombia", image: "https://imgur.com/ltYKdjN.jpg", video: "/videos/project1.mp4" },
-    { id: 2, title: "Hotel Boutique Cartagena", location: "Cartagena, Colombia", image: "https://imgur.com/M0FkRgK.jpg", video: "/videos/project2.mp4" },
-    { id: 3, title: "Torres del Parque", location: "Miami, EE.UU.", image: "https://imgur.com/ESp0r14.jpg", video: "/videos/project3.mp4" },
-    { id: 4, title: "Paisajismo Urbano", location: "Nueva Jersey, EE.UU.", image: "https://imgur.com/dAPMn7j.jpg", video: "/videos/project4.mp4" }
+    { id: 1, title: "Centro Comercial Galerías", location: "Bogotá, Colombia", image: "https://imgur.com/ltYKdjN.jpg" },
+    { id: 2, title: "Hotel Boutique Cartagena", location: "Cartagena, Colombia", image: "https://imgur.com/M0FkRgK.jpg" },
+    { id: 3, title: "Torres del Parque", location: "Miami, EE.UU.", image: "https://imgur.com/ESp0r14.jpg" },
+    { id: 4, title: "Paisajismo Urbano", location: "Nueva Jersey, EE.UU.", image: "https://imgur.com/dAPMn7j.jpg" }
   ]
 
   const services = [
@@ -35,10 +35,10 @@ const Home = () => {
   ]
 
   const offices = [
-    { city: "Miami", country: "EE.UU.", image: "/images/miami.jpg" },
-    { city: "Nueva Jersey", country: "EE.UU.", image: "/images/newjersey.jpg" },
-    { city: "Pensilvania", country: "EE.UU.", image: "/images/pennsylvania.jpg" },
-    { city: "Bogotá", country: "Colombia", image: "/images/bogota.jpg" }
+    { city: "Miami", country: "EE.UU.", image: "https://imgur.com/p9YlwY6.jpg" },
+    { city: "Nueva Jersey", country: "EE.UU.", image: "https://imgur.com/aJfoeK1.jpg" },
+    { city: "Pensilvania", country: "EE.UU.", image: "https://imgur.com/BAfeZwm.jpg" },
+    { city: "Bogotá", country: "Colombia", image: "https://imgur.com/aRRsRTm.jpg" }
   ]
 
 
