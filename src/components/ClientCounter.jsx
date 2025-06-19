@@ -13,7 +13,6 @@ const ClientCounter = () => {
   useEffect(() => {
     gsapContext(() => {
       gsap.from(counterRef.current, {
-        opacity: 0,
         y: -20,
         duration: 1,
         delay: 1

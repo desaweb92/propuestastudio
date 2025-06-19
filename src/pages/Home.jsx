@@ -141,36 +141,31 @@ const Home = () => {
       
       {/* Sobre Nosotros */}
       <motion.section 
-        ref={addToRefs}
-        className="about-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-      >
-        <div className="section-container">
-          <h2 className="section-title">Diseño Urbano Studio</h2>
-          <div className="section-content">
-            <div className="about-text">
-              <p className="about-description">
-                Somos una firma internacional de arquitectura con presencia en EE.UU. y América Latina. 
-                Nos especializamos en crear espacios que inspiran y transforman comunidades.
-              </p>
-              <p className="about-description">
-                Bajo la dirección de nuestro fundador Carlos Tovar, combinamos innovación con funcionalidad 
-                para dar vida a proyectos arquitectónicos excepcionales.
-              </p>
-            </div>
-           <motion.div 
-        className="counter-container"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 1 }}
-      >
+  ref={addToRefs}
+  className="about-section"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 1.5 }}
+>
+  <div className="section-container">
+    <h2 className="section-title">Diseño Urbano Studio</h2>
+    <div className="section-content">
+      <div className="about-text">
+        <p className="about-description">
+          Somos una firma internacional de arquitectura con presencia en EE.UU. y América Latina. 
+          Nos especializamos en crear espacios que inspiran y transforman comunidades.
+        </p>
+        <p className="about-description">
+          Bajo la dirección de nuestro fundador Carlos Tovar, combinamos innovación con funcionalidad 
+          para dar vida a proyectos arquitectónicos excepcionales.
+        </p>
+      </div>
+      <div className="counter-container" style={{ opacity: 1, visibility: 'visible' }}>
         <ClientCounter />
-      </motion.div>
-          </div>
-        </div>
-      </motion.section>
+      </div>
+    </div>
+  </div>
+</motion.section>
 
          {/* Galería de proyectos */}
       <section 
