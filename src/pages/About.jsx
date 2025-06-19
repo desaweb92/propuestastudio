@@ -6,7 +6,7 @@ import gsap from 'gsap'
 import GalleryItem from '../components/GalleryItem'
 import { fadeIn } from '../utils/animations'
 
-const Gallery = () => {
+const About = () => {
   const { t } = useTranslation()
   const galleryRef = useRef(null)
   const gsapContext = useGsapContext(galleryRef)
@@ -94,4 +94,4 @@ const Gallery = () => {
   )
 }
 
-export default Gallery
+export default About

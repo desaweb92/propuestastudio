@@ -7,6 +7,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import WelcomeLanding from '../components/WelcomeLanding'
 import ClientCounter from '../components/ClientCounter'
 import './Home.css'
+import Footer from '../components/Footer'
 
 // Registrar plugin de GSAP
 gsap.registerPlugin(ScrollTrigger)
@@ -273,34 +274,7 @@ const Home = () => {
         </div>
       </section>
 
-   
-
-      {/* Contacto */}
-      <section 
-        ref={addToRefs}
-        className="contact-section"
-      >
-        <div className="section-container">
-          <h2 className="section-title">Transformemos espacios juntos</h2>
-          <div className="contact-content">
-            <p className="contact-text">
-              ¿Listo para comenzar tu próximo proyecto arquitectónico? Contáctanos para una consulta.
-            </p>
-            <motion.button
-              className="contact-button"
-              whileHover={{ 
-                scale: 1.05,
-                backgroundColor: "#fff",
-                color: "#000"
-              }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              Contactar
-            </motion.button>
-          </div>
-        </div>
-      </section>
+  <Footer/>
     </div>
   )
 }

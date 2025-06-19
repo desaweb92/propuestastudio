@@ -1,0 +1,232 @@
+/* Estilos base */
+.footer-container {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  padding: 80px 40px 40px;
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer-title {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.footer-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background-color: #fff;
+}
+
+/* Newsletter */
+.footer-newsletter {
+  grid-column: span 1;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-input {
+  width: 100%;
+  padding: 12px 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.newsletter-input:focus {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+.newsletter-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+}
+
+.submit-arrow {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 0 12px 10px;
+  transition: transform 0.3s ease;
+}
+
+.submit-arrow:hover {
+  transform: translateX(5px);
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-left: 15px;
+}
+
+.social-links a::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-5px);
+}
+
+.social-links a:hover {
+  color: #ccc;
+}
+
+.social-links a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contact and Polices */
+.footer-contact,
+.footer-polices,
+.footer-company,
+.footer-contact-us {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info,
+.polices-links,
+.company-links,
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-info a,
+.polices-links a,
+.company-links a,
+.contact-details a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover,
+.polices-links a:hover,
+.company-links a:hover,
+.contact-details a:hover {
+  color: #ccc;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 40px auto 0;
+  padding-top: 40px;
+}
+
+.footer-logo img {
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+
+.copyright {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+/* Animaciones */
+.footer-title,
+.input-group,
+.social-links a,
+.contact-info a,
+.polices-links a,
+.company-links a,
+.contact-details a {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Retrasos para la animación */
+.footer-title { animation-delay: 0.1s; }
+.input-group { animation-delay: 0.2s; }
+.social-links a:nth-child(1) { animation-delay: 0.3s; }
+.social-links a:nth-child(2) { animation-delay: 0.4s; }
+.social-links a:nth-child(3) { animation-delay: 0.5s; }
+.contact-info a:nth-child(1) { animation-delay: 0.3s; }
+.contact-info a:nth-child(2) { animation-delay: 0.4s; }
+.polices-links a:nth-child(1) { animation-delay: 0.3s; }
+.polices-links a:nth-child(2) { animation-delay: 0.4s; }
+.polices-links a:nth-child(3) { animation-delay: 0.5s; }
+.company-links a:nth-child(1) { animation-delay: 0.3s; }
+.company-links a:nth-child(2) { animation-delay: 0.4s; }
+.contact-details a:nth-child(1) { animation-delay: 0.3s; }
+.contact-details a:nth-child(2) { animation-delay: 0.4s; }

@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Home from './pages/Home'
 import Portfolio from './pages/Portfolio'
-import Gallery from './pages/Gallery'
+import Gallery from './pages/About'
 import FloatingMenu from './components/FloatingMenu'
 import PortfolioButton from './components/PortfolioButton'
 import './assets/styles/main.css'
+import About from './pages/About'
+import News from './pages/News'
 
 function App() {
   const { i18n } = useTranslation()
@@ -50,7 +52,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<About />} />
+           <Route path="/news" element={<News />} />
         </Routes>
       </div>
     </Router>
