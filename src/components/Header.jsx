@@ -70,7 +70,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen, changeLanguage }) => {
           transition={{ duration: 0.8 }}
         >
           <div className="header-logo">
-           <img src="https://i.imgur.com/iAjXwj2.png" alt="" />
+           <img src="https://i.imgur.com/SKwdMty.png" alt="" />
           </div>
           
           <nav ref={navRef} className="header-nav">
