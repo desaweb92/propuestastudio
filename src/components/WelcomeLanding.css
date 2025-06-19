@@ -1,0 +1,141 @@
+/* Estilos para el slider de fondo */
+.bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;
+}
+
+.bg-slide:first-child {
+  opacity: 1;
+}
+
+.welcome-landing {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.welcome-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg, 
+    rgba(0, 0, 0, 0.02) 0%, 
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 90%;
+  padding: 0 2rem;
+}
+
+.welcome-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.welcome-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  color: #fff;
+  max-width: 90%;
+  margin: 0 auto;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  padding: 0 1rem;
+}
+
+/* Efectos de hover solo para desktop */
+@media (hover: hover) and (min-width: 1024px) {
+  .welcome-title:hover {
+    color: #c5c4c4;
+    letter-spacing: 2px;
+  }
+  
+  .welcome-text:hover {
+    color: #c4c2c2;
+    scale: 1.02;
+  }
+}
+
+/* Línea decorativa */
+.welcome-content::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 2rem auto 0;
+}
+
+/* Media Queries específicas */
+@media (max-width: 1024px) {
+  .welcome-landing {
+    min-height: 500px;
+  }
+  
+  .welcome-content {
+    max-width: 95%;
+    padding: 0 1.5rem;
+  }
+  
+  .welcome-title {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .welcome-landing {
+    min-height: 450px;
+  }
+  
+  .welcome-content {
+    padding: 0 1rem;
+  }
+  
+  .welcome-content::after {
+    width: 60px;
+    margin: 1.5rem auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    letter-spacing: 0.5px;
+    margin-bottom: 0.8rem;
+  }
+  
+  .welcome-text {
+    line-height: 1.6;
+    padding: 0;
+  }
+  
+}

@@ -26,7 +26,7 @@ const Home = () => {
     { id: 3, title: "Torres del Parque", location: "Miami, EE.UU.", image: "https://imgur.com/ESp0r14.jpg", video: "/videos/project3.mp4" },
     { id: 4, title: "Paisajismo Urbano", location: "Nueva Jersey, EE.UU.", image: "https://imgur.com/dAPMn7j.jpg", video: "/videos/project4.mp4" }
   ]
-  
+
   const services = [
     { title: "Interiorismo Comercial", image: "https://imgur.com/8UzYJDT.jpg" },
     { title: "Desarrollos Residenciales", image: "https://imgur.com/0f2Ispb.jpg" },
@@ -44,9 +44,11 @@ const Home = () => {
 
 
   useEffect(() => {
-    gsapContext(() => {
-      // Animación de entrada para secciones con efecto parallax
-      sectionRefs.current.forEach((section, i) => {
+  gsapContext(() => {
+    // Animación de entrada para secciones con efecto parallax
+    sectionRefs.current.forEach((section, i) => {
+      // Excluimos el contador de esta animación
+      if (!section.classList.contains('about-section')) {
         gsap.from(section, {
           opacity: 0,
           y: 80,
@@ -58,7 +60,8 @@ const Home = () => {
             toggleActions: "play none none none"
           }
         })
-      })
+      }
+    })
 
       // Animación para los servicios con efecto de revelación
       gsap.from(".service-item", {
@@ -157,9 +160,14 @@ const Home = () => {
                 para dar vida a proyectos arquitectónicos excepcionales.
               </p>
             </div>
-            <div className="counter-container">
-              <ClientCounter />
-            </div>
+           <motion.div 
+        className="counter-container"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+      >
+        <ClientCounter />
+      </motion.div>
           </div>
         </div>
       </motion.section>
