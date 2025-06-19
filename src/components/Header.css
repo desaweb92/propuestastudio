@@ -1,0 +1,130 @@
+/* Estilos base */
+.header-wrapper {
+  position: relative;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Navegación desktop */
+.desktop-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.desktop-menu li {
+  margin: 0 1.2rem;
+  position: relative;
+}
+
+.menu-item {
+  position: relative;
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #000;
+}
+
+.menu-item-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+
+.menu-item.active .menu-item-underline {
+  width: 100%;
+}
+
+/* Elementos de utilidad */
+.header-utils {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Botón de menú móvil */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 1px;
+  background-color: #000;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Responsive: Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    padding: 1.2rem 5%;
+  }
+  
+  .desktop-menu li {
+    margin: 0 0.8rem;
+  }
+  
+  .menu-item {
+    font-size: 0.85rem;
+  }
+}
+
+/* Responsive: Mobile (menos de 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 5%;
+  }
+  
+  .desktop-menu {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block;
+  }
+  
+  .header-utils {
+    gap: 1rem;
+  }
+}
+
+/* Pequeños móviles (menos de 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 0.8rem 5%;
+  }
+}
