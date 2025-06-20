@@ -30,12 +30,7 @@ const WelcomeLanding = () => {
       })
 
       // Animación para el slider de fondo
-      const images = [
-        'https://i.imgur.com/8UzYJDT.jpg',
-        'https://i.imgur.com/0f2Ispb.jpg',
-        'https://i.imgur.com/XuefQiH.jpg',
-        'https://i.imgur.com/jbbr9He.jpg'
-      ]
+  
       
       let currentIndex = 0
       const bgSlides = document.querySelectorAll('.bg-slide')

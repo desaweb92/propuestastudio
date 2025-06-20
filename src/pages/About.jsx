@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { useGsapContext } from "../hooks/useGsapContext";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import WelcomeLanding from "../components/WelcomeLanding";
-import ClientCounter from "../components/ClientCounter";
 import "./About.css";
 import Footer from "../components/Footer";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
@@ -132,7 +130,6 @@ const About = () => {
       sectionRefs.current.forEach((section, i) => {
         if (!section.classList.contains("about-section")) {
           gsap.from(section, {
-            opacity: 0,
             y: 80,
             duration: 1.2,
             ease: "power3.out",
@@ -148,7 +145,7 @@ const About = () => {
       imageRefs.current.forEach((img, i) => {
         gsap.fromTo(
           img,
-          { y: 50, opacity: 0 },
+          { y: 50 },
           {
             y: 0,
             opacity: 1,
@@ -165,7 +162,6 @@ const About = () => {
 
       gsap.from(".section-title", {
         x: -30,
-        opacity: 0,
         duration: 1,
         scrollTrigger: {
           trigger: ".section-title",
