@@ -33,7 +33,6 @@ const News = () => {
     const ctx = gsap.context(() => {
       // Main title animation
       gsap.from(titleRef.current, {
-        opacity: 0,
         y: 40,
         duration: 1.2,
         ease: "power3.out",
@@ -41,7 +40,6 @@ const News = () => {
 
       // Subtitle animation
       gsap.from(subtitleRef.current, {
-        opacity: 0,
         y: 30,
         duration: 0.8,
         delay: 0.3,
@@ -69,7 +67,6 @@ const News = () => {
       // Side images animation
       gsap.from(leftImageRef.current, {
         x: -300,
-        opacity: 0,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
@@ -81,7 +78,6 @@ const News = () => {
 
       gsap.from(rightImageRef.current, {
         x: 300,
-        opacity: 0,
         duration: 1.5,
         ease: "power3.out",
         scrollTrigger: {
@@ -94,7 +90,6 @@ const News = () => {
       // Section animations
       sectionRefs.current.forEach((section, index) => {
         gsap.from(section, {
-          opacity: 0,
           y: 50,
           duration: 0.8,
           delay: index * 0.15,
@@ -128,7 +123,7 @@ const News = () => {
 
   return (
     <div ref={newsRef} className="news-page">
-      {/* Sección de Bienvenida con Background Image */}
+      {/* Sección de Bienvenida con Background Image  */}
       <motion.section
         className="welcome-section"
         initial={{ opacity: 0 }}
@@ -160,7 +155,7 @@ const News = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
             style={{
-              fontSize: "8rem",
+              fontSize: "clamp(3rem, 10vw, 8rem)",
               color: "#fff",
               textAlign: "center",
               marginBottom: "1rem",
@@ -191,7 +186,7 @@ const News = () => {
       <section
         className="side-images-section"
         style={{
-          padding: "4rem 0",
+          padding: "clamp(2rem, 5vw, 4rem) 0", // Responsive entre 2rem y 4rem
           backgroundColor: "#f8f8f8",
           overflow: "hidden",
         }}
@@ -200,26 +195,22 @@ const News = () => {
           className="container"
           style={{
             display: "flex",
+            flexDirection: window.innerWidth < 768 ? "column" : "row", // Columna en móvil
             justifyContent: "space-between",
-            gap: "2rem",
+            gap: "clamp(1rem, 3vw, 2rem)", // Responsive entre 1rem y 2rem
             maxWidth: "1200px",
             margin: "0 auto",
-            padding: "0 2rem",
-            "@media (max-width: 768px)": {
-              flexDirection: "column",
-            },
+            padding: "0 clamp(1rem, 3vw, 2rem)", // Responsive entre 1rem y 2rem
           }}
         >
           <div
             ref={leftImageRef}
             style={{
-              width: "50%",
+              width: window.innerWidth < 768 ? "100%" : "50%", // 100% en móvil
               overflow: "hidden",
               borderRadius: "8px",
               boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-              "@media (max-width: 768px)": {
-                width: "100%",
-              },
+              marginBottom: window.innerWidth < 768 ? "1rem" : "0", // Margen inferior solo en móvil
             }}
           >
             <img
@@ -232,9 +223,11 @@ const News = () => {
                 transition: "transform 0.5s ease",
               }}
               onMouseEnter={(e) =>
+                window.innerWidth > 768 && // Solo efecto hover en desktop
                 gsap.to(e.target, { scale: 1.05, duration: 0.5 })
               }
               onMouseLeave={(e) =>
+                window.innerWidth > 768 && // Solo efecto hover en desktop
                 gsap.to(e.target, { scale: 1, duration: 0.5 })
               }
             />
@@ -242,13 +235,10 @@ const News = () => {
           <div
             ref={rightImageRef}
             style={{
-              width: "50%",
+              width: window.innerWidth < 768 ? "100%" : "50%", // 100% en móvil
               overflow: "hidden",
               borderRadius: "8px",
               boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
-              "@media (max-width: 768px)": {
-                width: "100%",
-              },
             }}
           >
             <img
@@ -261,9 +251,11 @@ const News = () => {
                 transition: "transform 0.5s ease",
               }}
               onMouseEnter={(e) =>
+                window.innerWidth > 768 && // Solo efecto hover en desktop
                 gsap.to(e.target, { scale: 1.05, duration: 0.5 })
               }
               onMouseLeave={(e) =>
+                window.innerWidth > 768 && // Solo efecto hover en desktop
                 gsap.to(e.target, { scale: 1, duration: 0.5 })
               }
             />
@@ -281,7 +273,7 @@ const News = () => {
         transition={{ duration: 0.8 }}
         style={{
           backgroundColor: "#f8f8f8",
-          padding: "6rem 0",
+          padding: "clamp(3rem, 8vw, 6rem) 0", // Responsive entre 3rem y 6rem
           position: "relative",
           fontFamily: "'Poppins', 'Helvetica Neue', Arial, sans-serif",
         }}
@@ -289,9 +281,9 @@ const News = () => {
         <div
           className="container2"
           style={{
-            maxWidth: "1200px",
+            maxWidth: "min(1200px, 90%)", // Máximo 1200px o 90% del ancho
             margin: "0 auto",
-            padding: "0 2rem",
+            padding: "0 clamp(1rem, 4vw, 2rem)", // Responsive entre 1rem y 2rem
             position: "relative",
             zIndex: "1",
           }}
@@ -299,10 +291,10 @@ const News = () => {
           <h2
             className="section-title-contactanos"
             style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontSize: "clamp(1.8rem, 5vw, 3rem)", // Responsive entre 1.8rem y 3rem
               fontWeight: "300",
               letterSpacing: "-0.5px",
-              marginBottom: "1.5rem",
+              marginBottom: "clamp(1rem, 3vw, 1.5rem)", // Responsive entre 1rem y 1.5rem
               color: "#222",
               lineHeight: "1.2",
               textAlign: "center",
@@ -314,11 +306,10 @@ const News = () => {
               style={{
                 content: '""',
                 display: "block",
-                width: "80px",
+                width: "clamp(60px, 15vw, 80px)", // Responsive entre 60px y 80px
                 height: "1px",
                 background: "#222",
-                margin: "1.5rem auto 0",
-                opacity: "0.2",
+                margin: "clamp(1rem, 3vw, 1.5rem) auto 0", // Responsive entre 1rem y 1.5rem
               }}
             />
           </h2>
@@ -329,63 +320,34 @@ const News = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              gap: "1.5rem",
-              fontSize: "1.1rem",
+              gap: "clamp(1rem, 2vw, 1.5rem)", // Responsive entre 1rem y 1.5rem
+              fontSize: "clamp(1rem, 2vw, 1.1rem)", // Responsive entre 1rem y 1.1rem
               color: "#555",
-              maxWidth: "600px",
+              maxWidth: "min(600px, 90%)", // Máximo 600px o 90% del ancho
               margin: "0 auto",
             }}
           >
-            <p
-              style={{
-                margin: "0",
-                padding: "0",
-                position: "relative",
-                transition: "all 0.3s ease",
-                lineHeight: "1.8",
-                fontWeight: "400",
-              }}
-            >
-              contacto@disenourbanostudio.com
-            </p>
-
-            <p
-              style={{
-                margin: "0",
-                padding: "0",
-                position: "relative",
-                transition: "all 0.3s ease",
-                lineHeight: "1.8",
-                fontWeight: "400",
-              }}
-            >
-              Teléfono: (484) 937-9707
-            </p>
-
-            <p
-              style={{
-                margin: "0",
-                padding: "0",
-                position: "relative",
-                transition: "all 0.3s ease",
-                lineHeight: "1.8",
-              }}
-            >
-              252 NW 29th St, FL 9, Miami, FL 33127
-            </p>
-
-            <p
-              style={{
-                margin: "0",
-                padding: "0 0 2px 0",
-                position: "relative",
-                transition: "all 0.3s ease",
-                lineHeight: "1.8",
-                borderBottom: "1px solid #ccc",
-              }}
-            >
-              www.diseurbanostudio.com
-            </p>
+            {[
+              "contacto@disenourbanostudio.com",
+              "Teléfono: (484) 937-9707",
+              "252 NW 29th St, FL 9, Miami, FL 33127",
+              "www.diseurbanostudio.com",
+            ].map((text, index) => (
+              <p
+                key={index}
+                style={{
+                  margin: "0",
+                  padding: index === 3 ? "0 0 2px 0" : "0", // Solo el último con padding inferior
+                  position: "relative",
+                  transition: "all 0.3s ease",
+                  lineHeight: "1.8",
+                  fontWeight: index !== 2 ? "400" : "normal", // El tercer item sin fontWeight
+                  borderBottom: index === 3 ? "1px solid #ccc" : "none", // Solo el último con borde
+                }}
+              >
+                {text}
+              </p>
+            ))}
           </div>
         </div>
 
@@ -432,19 +394,27 @@ const News = () => {
             opacity: 1;
           }
 
+          /* Media queries para ajustes específicos */
           @media (max-width: 768px) {
-            .contacto-section {
-              padding: 4rem 0;
-            }
-
-            .section-title-contactanos {
-              font-size: clamp(1.8rem, 5vw, 2.5rem);
-              margin-bottom: 1rem;
-            }
-
             .contact-info2 {
-              font-size: 1rem;
-              gap: 1rem;
+              align-items: flex-start;
+              max-width: 100%;
+            }
+
+            p::before {
+              left: -12px;
+            }
+          }
+
+          @media (max-width: 480px) {
+            p {
+              line-height: 1.6;
+            }
+
+            p::before {
+              width: 5px;
+              height: 5px;
+              left: -10px;
             }
           }
         `}</style>
@@ -474,7 +444,7 @@ const News = () => {
             position: "relative",
           }}
         >
-          {/* Decorative elements */}
+          {/* Línea decorativa (igual que original) */}
           <div
             className="decorative-line"
             style={{
@@ -488,6 +458,7 @@ const News = () => {
             }}
           />
 
+          {/* Header (idéntico al original) */}
           <div
             className="section-header"
             style={{
@@ -519,7 +490,7 @@ const News = () => {
             <motion.h2
               className="section-title"
               style={{
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontSize: "3.5rem",
                 fontWeight: "300",
                 letterSpacing: "-0.5px",
                 margin: "0",
@@ -537,6 +508,7 @@ const News = () => {
             </motion.h2>
           </div>
 
+          {/* Contenido principal - Layout desktop original */}
           <div
             className="section-content"
             style={{
@@ -545,11 +517,9 @@ const News = () => {
               gap: "4rem",
               position: "relative",
               zIndex: "1",
-              "@media (max-width: 768px)": {
-                gridTemplateColumns: "1fr",
-              },
             }}
           >
+            {/* Columna de texto (estilo original) */}
             <motion.div
               className="section-text"
               style={{
@@ -570,10 +540,11 @@ const News = () => {
                   marginBottom: "2rem",
                 }}
               >
-                El proyecto "Terraza Wayuu, El Rubí" se inspira profundamente en
-                los ricos tejidos de la cultura Wayuu, particularmente en su
-                diseño interior, conectando profundamente con la herencia de su
-                fundador y la visión de Diseño Urbano Studio (ñ | DUS).
+                The “Wayuu Terrace, El Rubi” project draws profound inspiration
+                from the rich woven fabrics of the Wayuu culture, particularly
+                in its interior design, connecting deeply with the heritage of
+                its founder and the vision of Diseño Urbano Studio (ñ | DUS).
+                
               </motion.p>
 
               <motion.p
@@ -583,24 +554,23 @@ const News = () => {
                   color: "#555",
                 }}
               >
-                Nacido en Santa Marta, el fundador canaliza sus raíces
-                culturales en el diseño arquitectónico holístico, incorporando a
-                la perfección elementos como el tradicional chinchorro, la
-                mística noche guajira y la ingeniosa iluminación indirecta del
-                techo.
+                Born in Santa Marta, the founder channels his cultural roots
+                into the holistic architectural design, seamlessly incorporating
+                elements such as the traditional chinchorro, the mystical
+                Guajira night, and artfully integrated indirect ceiling
+                lighting. This approach not only honors but reinterprets
+                Colombia’s vibrant cultural traditions, infusing them with
+                contemporary elegance and meaning.
               </motion.p>
             </motion.div>
 
+            {/* Columna de imágenes (original) */}
             <div
               className="section-images"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
                 gap: "1.5rem",
-                "@media (max-width: 768px)": {
-                  gridTemplateColumns: "1fr",
-                  marginTop: "2rem",
-                },
               }}
             >
               <motion.div
@@ -618,18 +588,22 @@ const News = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.5 }}
                 onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget.querySelector("img"), {
-                    scale: 1.05,
-                    duration: 0.8,
-                    ease: "power2.out",
-                  });
+                  if (window.innerWidth > 768) {
+                    gsap.to(e.currentTarget.querySelector("img"), {
+                      scale: 1.05,
+                      duration: 0.8,
+                      ease: "power2.out",
+                    });
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget.querySelector("img"), {
-                    scale: 1,
-                    duration: 0.8,
-                    ease: "power2.out",
-                  });
+                  if (window.innerWidth > 768) {
+                    gsap.to(e.currentTarget.querySelector("img"), {
+                      scale: 1,
+                      duration: 0.8,
+                      ease: "power2.out",
+                    });
+                  }
                 }}
               >
                 <motion.img
@@ -661,18 +635,22 @@ const News = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 onMouseEnter={(e) => {
-                  gsap.to(e.currentTarget.querySelector("img"), {
-                    scale: 1.05,
-                    duration: 0.8,
-                    ease: "power2.out",
-                  });
+                  if (window.innerWidth > 768) {
+                    gsap.to(e.currentTarget.querySelector("img"), {
+                      scale: 1.05,
+                      duration: 0.8,
+                      ease: "power2.out",
+                    });
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  gsap.to(e.currentTarget.querySelector("img"), {
-                    scale: 1,
-                    duration: 0.8,
-                    ease: "power2.out",
-                  });
+                  if (window.innerWidth > 768) {
+                    gsap.to(e.currentTarget.querySelector("img"), {
+                      scale: 1,
+                      duration: 0.8,
+                      ease: "power2.out",
+                    });
+                  }
                 }}
               >
                 <motion.img
@@ -691,33 +669,43 @@ const News = () => {
           </div>
         </div>
 
-        {/* GSAP Animations */}
+        {/* MEDIA QUERIES (SOLO AFECTAN MÓVIL) */}
         <style jsx>{`
-          @keyframes float {
-            0%,
-            100% {
-              transform: translateY(0);
+          @media (max-width: 991px) {
+            .roots-section {
+              padding: 6rem 0;
             }
-            50% {
-              transform: translateY(-10px);
+            .section-header {
+              margin-bottom: 3rem;
             }
           }
 
-          .section-title:hover {
-            animation: float 3s ease-in-out infinite;
-          }
-
-          @media (max-width: 768px) {
+          @media (max-width: 767px) {
             .roots-section {
               padding: 4rem 0;
             }
-
             .section-content {
-              gap: 2rem;
+              grid-template-columns: 1fr !important;
+              gap: 2rem !important;
             }
-
+            .section-text {
+              padding-right: 0 !important;
+            }
             .section-images {
-              gap: 1rem;
+              grid-template-columns: 1fr !important;
+              margin-top: 2rem;
+            }
+            .section-title {
+              font-size: 2.5rem !important;
+            }
+            .decorative-line {
+              display: none;
+            }
+          }
+
+          @media (max-width: 479px) {
+            .section-title {
+              font-size: 2rem !important;
             }
           }
         `}</style>
@@ -725,14 +713,14 @@ const News = () => {
 
       {/* Stats Section */}
       <motion.section
-  className="stats-section"
-  ref={addToRefs}
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8 }}
->
-  <style>{`
+        className="stats-section"
+        ref={addToRefs}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <style>{`
     .stats-section {
       background: #777;
       padding: 80px 20px;
@@ -795,164 +783,193 @@ const News = () => {
       background: white;
       box-shadow: 0 0 8px white;
     }
+
+    @media (max-width: 768px) {
+      .stats-section {
+        padding: 60px 20px;
+      }
+      
+      .stat-info {
+        flex-direction: column;
+        gap: 5px;
+      }
+      
+      .stat-info span:first-child {
+        max-width: 100%;
+      }
+      
+      .stat-value {
+        font-size: 18px;
+      }
+    }
   `}</style>
 
-  <div className="container">
-    <div className="stats-container">
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>100% integrative process between architectural and engineering teams</span>
-          <span className="stat-value">100%</span>
-        </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar" 
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '100%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
+        <div className="container">
+          <div className="stats-container">
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>
+                  100% integrative process between architectural and engineering
+                  teams
+                </span>
+                <span className="stat-value">100%</span>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "100%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
 
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>75% implementation of key sustainable water consumption</span>
-          <span className="stat-value">75%</span>
-        </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar"
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '75%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>
+                  75% implementation of key sustainable water consumption
+                </span>
+                <span className="stat-value">75%</span>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "75%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
 
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>35% reduction in potable water consumption</span>
-          <span className="stat-value">35%</span>
-        </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar"
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '35%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>35% reduction in potable water consumption</span>
+                <span className="stat-value">35%</span>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "35%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
 
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>32% energy consumption reduction</span>
-          <span className="stat-value">32%</span>
-        </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar"
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '32%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>32% energy consumption reduction</span>
+                <span className="stat-value">32%</span>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "32%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
 
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>25% post-consumer and 50% pre-consumer content in materials</span>
-          <span className="stat-value">25% / 50%</span>
-          <small>use of FSC forest stewardship wood</small>
-        </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar"
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '50%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>
+                  25% post-consumer and 50% pre-consumer content in materials
+                </span>
+                <span className="stat-value">25% / 50%</span>
+                <small>use of FSC forest stewardship wood</small>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "50%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
 
-      <div className="stat-item">
-        <div className="stat-info">
-          <span>100% natural ventilation, HVAC, and natural views for all units</span>
-          <span className="stat-value">100%</span>
-          <small>75% of low-VOC products used in finishes</small>
+            <div className="stat-item">
+              <div className="stat-info">
+                <span>
+                  100% natural ventilation, HVAC, and natural views for all
+                  units
+                </span>
+                <span className="stat-value">100%</span>
+                <small>75% of low-VOC products used in finishes</small>
+              </div>
+              <div className="stat-bar-container">
+                <div
+                  className="stat-bar"
+                  ref={(el) => {
+                    if (el && typeof gsap !== "undefined") {
+                      gsap.to(el, {
+                        width: "100%",
+                        duration: 1.5,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                          trigger: el,
+                          start: "top 80%",
+                        },
+                      });
+                    }
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="stat-bar-container">
-          <div 
-            className="stat-bar"
-            ref={el => {
-              if (el && typeof gsap !== 'undefined') {
-                gsap.to(el, {
-                  width: '100%',
-                  duration: 1.5,
-                  ease: 'power3.out',
-                  scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%'
-                  }
-                });
-              }
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</motion.section>
+      </motion.section>
 
       {/* Eco Section */}
       <motion.section
@@ -1084,10 +1101,6 @@ const News = () => {
               gridTemplateColumns: "1fr 1fr",
               gap: "5rem",
               alignItems: "center",
-              "@media (max-width: 768px)": {
-                gridTemplateColumns: "1fr",
-                gap: "3rem",
-              },
             }}
           >
             {/* Text Content */}
@@ -1285,370 +1298,388 @@ const News = () => {
               margin-bottom: 3rem;
             }
 
+            .section-content {
+              grid-template-columns: 1fr;
+              gap: 3rem;
+            }
+
             .eco-badges {
               justify-content: center;
+              flex-wrap: wrap;
             }
           }
         `}</style>
       </motion.section>
 
       {/* Heritage Section */}
-<motion.section
-  className="heritage-section"
-  ref={addToRefs}
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true, margin: "-100px" }}
-  transition={{ duration: 0.8 }}
-  style={{
-    position: 'relative',
-    padding: '8rem 0',
-    backgroundColor: '#fff',
-    overflow: 'hidden'
-  }}
->
-  {/* Fondo texturado sutil */}
-  <div 
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      backgroundImage: 'url(/images/subtle-texture.png)',
-      opacity: 0.03,
-      zIndex: 0
-    }}
-  />
-  
-  <div 
-    className="container"
-    style={{
-      maxWidth: '1200px',
-      margin: '0 auto',
-      padding: '0 2rem',
-      position: 'relative',
-      zIndex: 1
-    }}
-  >
-    {/* Línea decorativa vertical */}
-    <div 
-      style={{
-        position: 'absolute',
-        left: '2rem',
-        top: 0,
-        height: '100%',
-        width: '1px',
-        backgroundColor: 'rgba(0,0,0,0.1)',
-        '@media (max-width: 768px)': {
-          display: 'none'
-        }
-      }}
-    />
-    
-    {/* Header centrado */}
-    <motion.div
-      className="section-header"
-      style={{
-        marginBottom: '5rem',
-        textAlign: 'center',
-        position: 'relative'
-      }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-    >
-      <motion.span
-        className="section-tag"
-        style={{
-          display: 'block',
-          fontSize: '0.9rem',
-          letterSpacing: '3px',
-          textTransform: 'uppercase',
-          color: '#8B5A2B', // Tonos tierra para heritage
-          marginBottom: '1.5rem',
-          opacity: 0,
-          y: 10
-        }}
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        HERITAGE
-      </motion.span>
-      
-      <motion.h2
-        className="section-title"
-        style={{
-          fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-          fontWeight: '300',
-          letterSpacing: '-0.5px',
-          margin: '0 auto',
-          color: '#222',
-          lineHeight: '1.2',
-          maxWidth: '800px',
-          position: 'relative',
-          display: 'inline-block'
-        }}
+      <motion.section
+        className="heritage-section"
+        ref={addToRefs}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-      >
-        Neuweiler en Allentown
-        <span 
-          style={{
-            position: 'absolute',
-            bottom: '-10px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '80px',
-            height: '1px',
-            backgroundColor: '#8B5A2B',
-            opacity: 0
-          }}
-          initial={{ opacity: 0, width: 0 }}
-          whileInView={{ opacity: 0.5, width: '80px' }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        />
-      </motion.h2>
-    </motion.div>
-    
-    {/* Contenido en grid */}
-    <div 
-      className="section-content"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1.2fr 1fr',
-        gap: '4rem',
-        alignItems: 'center',
-        '@media (max-width: 768px)': {
-          gridTemplateColumns: '1fr'
-        }
-      }}
-    >
-      {/* Imagen con efecto vintage sofisticado */}
-      <motion.div
-        className="section-image"
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
         style={{
-          position: 'relative',
-          overflow: 'hidden',
-          borderRadius: '4px',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.08)',
-          height: '600px',
-          opacity: 0,
-          x: -30
-        }}
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.5 }}
-        onMouseEnter={() => {
-          gsap.to('.section-image img', { 
-            scale: 1.03,
-            duration: 1.2,
-            ease: 'power2.out'
-          });
-          gsap.to('.vintage-overlay', {
-            opacity: 0,
-            duration: 0.8
-          });
-        }}
-        onMouseLeave={() => {
-          gsap.to('.section-image img', { 
-            scale: 1,
-            duration: 1.2,
-            ease: 'power2.out'
-          });
-          gsap.to('.vintage-overlay', {
-            opacity: 0.15,
-            duration: 0.8
-          });
+          position: "relative",
+          padding: "8rem 0",
+          backgroundColor: "#fff",
+          overflow: "hidden",
         }}
       >
-        <motion.img
-          src="https://imgur.com/rAbYd5H.jpg"
-          alt="Brewery restoration"
-          loading="lazy"
+        {/* Fondo texturado sutil */}
+        <div
           style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            transition: 'transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)'
-          }}
-        />
-        
-        {/* Overlay vintage sutil */}
-        <div 
-          className="vintage-overlay"
-          style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'linear-gradient(135deg, rgba(139, 90, 43, 0.15) 0%, rgba(0,0,0,0) 100%)',
-            mixBlendMode: 'multiply',
-            opacity: 0.15,
-            transition: 'opacity 0.8s ease'
+            width: "100%",
+            height: "100%",
+            backgroundImage: "url(/images/subtle-texture.png)",
+            opacity: 0.03,
+            zIndex: 0,
           }}
         />
-      </motion.div>
-      
-      {/* Texto con animación escalonada */}
-      <motion.div
-        className="section-text"
-        style={{
-          paddingLeft: '2rem',
-          opacity: 0,
-          y: 30
-        }}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-      >
-        <motion.p
+
+        <div
+          className="container"
           style={{
-            fontSize: '1.1rem',
-            lineHeight: '1.9',
-            color: '#555',
-            marginBottom: '2rem',
-            position: 'relative',
-            paddingLeft: '1.5rem'
+            maxWidth: "1200px",
+            margin: "0 auto",
+            padding: "0 2rem",
+            position: "relative",
+            zIndex: 1,
           }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <span 
+          {/* Línea decorativa vertical */}
+          <div
             style={{
-              position: 'absolute',
-              left: 0,
-              top: '0.7em',
-              width: '4px',
-              height: '4px',
-              backgroundColor: '#8B5A2B',
-              borderRadius: '50%'
+              position: "absolute",
+              left: "2rem",
+              top: 0,
+              height: "100%",
+              width: "1px",
+              backgroundColor: "rgba(0,0,0,0.1)",
             }}
           />
-          La restauración no se trata solo de actualizar; se trata de
-          preservar la historia única de cada espacio. A través del
-          proyecto Neuweiler en Allentown, Pensilvania, nuestra firma
-          valora el equilibrio entre lo antiguo y lo moderno, creando
-          diseños que respetan el pasado y satisfacen las necesidades
-          actuales.
-        </motion.p>
-        
-        <motion.p
-          style={{
-            fontSize: '1.1rem',
-            lineHeight: '1.9',
-            color: '#555',
-            position: 'relative',
-            paddingLeft: '1.5rem'
-          }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <span 
+
+          {/* Header centrado */}
+          <motion.div
+            className="section-header"
             style={{
-              position: 'absolute',
-              left: 0,
-              top: '0.7em',
-              width: '4px',
-              height: '4px',
-              backgroundColor: '#8B5A2B',
-              borderRadius: '50%'
+              marginBottom: "5rem",
+              textAlign: "center",
+              position: "relative",
             }}
-          />
-          Este proyecto, que transforma una cervecería histórica en
-          espacios con apartamentos y tiendas, resalta nuestro compromiso
-          de crear entornos atemporales y hermosos, asegurando que cada
-          lugar continúe contando su historia durante generaciones.
-        </motion.p>
-        
-        {/* Botón elegante */}
-        <motion.div
-          style={{
-            marginTop: '3rem',
-            opacity: 0,
-            y: 20
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          <button
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <motion.span
+              className="section-tag"
+              style={{
+                display: "block",
+                fontSize: "0.9rem",
+                letterSpacing: "3px",
+                textTransform: "uppercase",
+                color: "#8B5A2B",
+                marginBottom: "1.5rem",
+                opacity: 0,
+                y: 10,
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              HERITAGE
+            </motion.span>
+
+            <motion.h2
+              className="section-title"
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontWeight: "300",
+                letterSpacing: "-0.5px",
+                margin: "0 auto",
+                color: "#222",
+                lineHeight: "1.2",
+                maxWidth: "800px",
+                position: "relative",
+                display: "inline-block",
+              }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Neuweiler en Allentown
+              <span
+                style={{
+                  position: "absolute",
+                  bottom: "-10px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "80px",
+                  height: "1px",
+                  backgroundColor: "#8B5A2B",
+                  opacity: 0,
+                }}
+                initial={{ opacity: 0, width: 0 }}
+                whileInView={{ opacity: 0.5, width: "80px" }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+              />
+            </motion.h2>
+          </motion.div>
+
+          {/* Contenido en grid */}
+          <div
+            className="section-content"
             style={{
-              padding: '0.8rem 2rem',
-              backgroundColor: 'transparent',
-              color: '#8B5A2B',
-              border: '1px solid #8B5A2B',
-              borderRadius: '50px',
-              fontSize: '0.9rem',
-              letterSpacing: '1px',
-              cursor: 'pointer',
-              transition: 'all 0.4s ease',
-              outline: 'none'
-            }}
-            onMouseEnter={(e) => {
-              gsap.to(e.target, {
-                backgroundColor: '#8B5A2B',
-                color: '#fff',
-                duration: 0.4
-              });
-            }}
-            onMouseLeave={(e) => {
-              gsap.to(e.target, {
-                backgroundColor: 'transparent',
-                color: '#8B5A2B',
-                duration: 0.4
-              });
+              display: "grid",
+              gridTemplateColumns: "1.2fr 1fr",
+              gap: "4rem",
+              alignItems: "center",
             }}
           >
-            EXPLORAR PROYECTO
-          </button>
-        </motion.div>
-      </motion.div>
-    </div>
-  </div>
+            {/* Imagen con efecto vintage sofisticado */}
+            <motion.div
+              className="section-image"
+              style={{
+                position: "relative",
+                overflow: "hidden",
+                borderRadius: "4px",
+                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.08)",
+                height: "600px",
+                opacity: 0,
+                x: -30,
+              }}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              onMouseEnter={() => {
+                gsap.to(".section-image img", {
+                  scale: 1.03,
+                  duration: 1.2,
+                  ease: "power2.out",
+                });
+                gsap.to(".vintage-overlay", {
+                  opacity: 0,
+                  duration: 0.8,
+                });
+              }}
+              onMouseLeave={() => {
+                gsap.to(".section-image img", {
+                  scale: 1,
+                  duration: 1.2,
+                  ease: "power2.out",
+                });
+                gsap.to(".vintage-overlay", {
+                  opacity: 0.15,
+                  duration: 0.8,
+                });
+              }}
+            >
+              <motion.img
+                src="https://imgur.com/rAbYd5H.jpg"
+                alt="Brewery restoration"
+                loading="lazy"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  transition: "transform 1.2s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+              />
 
-  {/* Animaciones GSAP personalizadas */}
-  <style jsx>{`
-    .section-title:hover span {
-      animation: lineGrow 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-    }
-    
-    @keyframes lineGrow {
-      0% { width: 80px; opacity: 0.5; }
-      50% { width: 100%; opacity: 0.8; }
-      100% { width: 80px; opacity: 0.5; }
-    }
-    
-    @media (max-width: 768px) {
-      .heritage-section {
-        padding: 4rem 0;
-      }
-      
-      .section-text {
-        padding-left: 0;
-        margin-top: 2rem;
-      }
-      
-      .section-image {
-        height: 400px;
-      }
-    }
-  `}</style>
-</motion.section>
+              {/* Overlay vintage sutil */}
+              <div
+                className="vintage-overlay"
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                  background:
+                    "linear-gradient(135deg, rgba(139, 90, 43, 0.15) 0%, rgba(0,0,0,0) 100%)",
+                  mixBlendMode: "multiply",
+                  opacity: 0.15,
+                  transition: "opacity 0.8s ease",
+                }}
+              />
+            </motion.div>
+
+            {/* Texto con animación escalonada */}
+            <motion.div
+              className="section-text"
+              style={{
+                paddingLeft: "2rem",
+                opacity: 0,
+                y: 30,
+              }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.p
+                style={{
+                  fontSize: "1.1rem",
+                  lineHeight: "1.9",
+                  color: "#555",
+                  marginBottom: "2rem",
+                  position: "relative",
+                  paddingLeft: "1.5rem",
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "0.7em",
+                    width: "4px",
+                    height: "4px",
+                    backgroundColor: "#8B5A2B",
+                    borderRadius: "50%",
+                  }}
+                />
+                La restauración no se trata solo de actualizar; se trata de
+                preservar la historia única de cada espacio. A través del
+                proyecto Neuweiler en Allentown, Pensilvania, nuestra firma
+                valora el equilibrio entre lo antiguo y lo moderno, creando
+                diseños que respetan el pasado y satisfacen las necesidades
+                actuales.
+              </motion.p>
+
+              <motion.p
+                style={{
+                  fontSize: "1.1rem",
+                  lineHeight: "1.9",
+                  color: "#555",
+                  position: "relative",
+                  paddingLeft: "1.5rem",
+                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    left: 0,
+                    top: "0.7em",
+                    width: "4px",
+                    height: "4px",
+                    backgroundColor: "#8B5A2B",
+                    borderRadius: "50%",
+                  }}
+                />
+                Este proyecto, que transforma una cervecería histórica en
+                espacios con apartamentos y tiendas, resalta nuestro compromiso
+                de crear entornos atemporales y hermosos, asegurando que cada
+                lugar continúe contando su historia durante generaciones.
+              </motion.p>
+
+              {/* Botón elegante */}
+              <motion.div
+                style={{
+                  marginTop: "3rem",
+                  opacity: 0,
+                  y: 20,
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.9 }}
+              >
+                <button
+                  style={{
+                    padding: "0.8rem 2rem",
+                    backgroundColor: "transparent",
+                    color: "#8B5A2B",
+                    border: "1px solid #8B5A2B",
+                    borderRadius: "50px",
+                    fontSize: "0.9rem",
+                    letterSpacing: "1px",
+                    cursor: "pointer",
+                    transition: "all 0.4s ease",
+                    outline: "none",
+                  }}
+                  onMouseEnter={(e) => {
+                    gsap.to(e.target, {
+                      backgroundColor: "#8B5A2B",
+                      color: "#fff",
+                      duration: 0.4,
+                    });
+                  }}
+                  onMouseLeave={(e) => {
+                    gsap.to(e.target, {
+                      backgroundColor: "transparent",
+                      color: "#8B5A2B",
+                      duration: 0.4,
+                    });
+                  }}
+                >
+                  EXPLORAR PROYECTO
+                </button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Animaciones GSAP personalizadas */}
+        <style jsx>{`
+          .section-title:hover span {
+            animation: lineGrow 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+          }
+
+          @keyframes lineGrow {
+            0% {
+              width: 80px;
+              opacity: 0.5;
+            }
+            50% {
+              width: 100%;
+              opacity: 0.8;
+            }
+            100% {
+              width: 80px;
+              opacity: 0.5;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .heritage-section {
+              padding: 4rem 0;
+            }
+
+            .section-content {
+              grid-template-columns: 1fr;
+            }
+
+            .section-text {
+              padding-left: 0;
+              margin-top: 2rem;
+            }
+
+            .section-image {
+              height: 400px;
+            }
+
+            .decorative-line {
+              display: none;
+            }
+          }
+        `}</style>
+      </motion.section>
 
       <Footer />
     </div>

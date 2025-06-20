@@ -357,7 +357,10 @@
   z-index: 2;
 }
 
-/* Responsive */
+/* ========================================= */
+/* RESPONSIVE ADJUSTMENTS - TABLET & MOBILE  */
+/* ========================================= */
+
 @media (max-width: 1200px) {
   .magazine-page {
     flex-direction: column;
@@ -368,25 +371,54 @@
   .page-left {
     border-right: none;
     border-bottom: 1px solid #eee;
+    padding: 30px;
+    flex: none;
+    height: 50%;
+  }
+  
+  .page-right {
+    padding: 40px;
+    flex: none;
+    height: 50%;
+    overflow-y: auto;
   }
   
   .project-images {
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
   }
   
   .image-container {
-    min-width: 70%;
+    min-width: 85%;
+    scroll-snap-align: center;
+    margin-right: 20px;
   }
   
   .magazine-container {
     height: auto;
-    min-height: 0;
+    min-height: 800px;
   }
 
   .drag-hint {
     display: none;
+  }
+
+  .project-title {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+  }
+
+  .project-meta {
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
   }
 }
 
@@ -401,40 +433,58 @@
   
   .page-left,
   .page-right {
-    padding: 30px;
+    padding: 25px;
   }
   
   .project-title {
-    font-size: 2rem;
-    margin-bottom: 30px;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
   
   .project-meta {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
   
   .magazine-page {
     width: 95%;
+    min-height: 700px;
   }
 
   .magazine-container {
-    height: 60vh;
-    min-height: 500px;
+    height: auto;
+    min-height: 700px;
+  }
+
+  .image-container {
+    min-width: 90%;
+  }
+
+  .control {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .page-indicator {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .portfolio-title {
     font-size: 2rem;
+    margin-bottom: 15px;
   }
   
   .portfolio-subtitle {
     font-size: 1rem;
+    line-height: 1.5;
   }
   
   .page-controls {
     flex-direction: column;
     gap: 15px;
+    margin-bottom: 30px;
   }
   
   .control {
@@ -448,16 +498,47 @@
   }
   
   .project-images {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 15px;
   }
   
   .image-container {
-    min-width: 100%;
+    min-width: 90%;
+    margin-right: 15px;
   }
 
   .magazine-container {
-    height: 50vh;
-    min-height: 400px;
+    height: auto;
+    min-height: 600px;
+  }
+
+  .magazine-page {
+    min-height: 600px;
+  }
+
+  .project-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+  }
+
+  .project-category {
+    font-size: 0.8rem;
+    padding: 6px 15px;
   }
 }
 
